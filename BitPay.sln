@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitPay_xUnit_Test", "BitPay_xUnit_Test\BitPay_xUnit_Test.csproj", "{178D4FC8-AAFD-4A1A-9E9C-F268F97B8CE5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitPayLight", "BitPayLight\BitPayLight.csproj", "{D3D3D5AE-B5A6-4508-B4C6-99D69AED0DD1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B487ED21-A798-4828-9B5D-4A8F788ECE41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B487ED21-A798-4828-9B5D-4A8F788ECE41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B487ED21-A798-4828-9B5D-4A8F788ECE41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B487ED21-A798-4828-9B5D-4A8F788ECE41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{178D4FC8-AAFD-4A1A-9E9C-F268F97B8CE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{178D4FC8-AAFD-4A1A-9E9C-F268F97B8CE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{178D4FC8-AAFD-4A1A-9E9C-F268F97B8CE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{178D4FC8-AAFD-4A1A-9E9C-F268F97B8CE5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33A13143-8A3A-485A-AF06-B7DF0564FB50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33A13143-8A3A-485A-AF06-B7DF0564FB50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33A13143-8A3A-485A-AF06-B7DF0564FB50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33A13143-8A3A-485A-AF06-B7DF0564FB50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3D3D5AE-B5A6-4508-B4C6-99D69AED0DD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3D3D5AE-B5A6-4508-B4C6-99D69AED0DD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3D3D5AE-B5A6-4508-B4C6-99D69AED0DD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3D3D5AE-B5A6-4508-B4C6-99D69AED0DD1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
