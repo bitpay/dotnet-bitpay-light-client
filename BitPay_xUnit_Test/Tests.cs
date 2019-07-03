@@ -191,13 +191,8 @@ namespace BitPay_xUnit_Test
             {
                 Number = "1", 
                 Currency = Currency.USD, 
-                Email = "agallardo@bitpay.com", 
-                Items = items, 
-                Cc = new List<string>
-                {
-                    "agallardo@bitpay.com",
-                    "agallardo+1@bitpay.com"
-                }
+                //Email = "", 
+                Items = items
             };
             var basicBill = await _bitpay.CreateBill(bill);
             Assert.NotNull(basicBill.Id);
@@ -216,13 +211,8 @@ namespace BitPay_xUnit_Test
             {
                 Number = "2", 
                 Currency = Currency.EUR, 
-                Email = "agallardo@bitpay.com", 
-                Items = items, 
-                Cc = new List<string>
-                {
-                    "agallardo@bitpay.com",
-                    "agallardo+1@bitpay.com"
-                }
+                //Email = "", 
+                Items = items
             };
             var basicBill = await _bitpay.CreateBill(bill);
             Assert.NotNull(basicBill.Id);
@@ -241,13 +231,8 @@ namespace BitPay_xUnit_Test
             {
                 Number = "3", 
                 Currency = Currency.USD, 
-                Email = "agallardo@bitpay.com", 
-                Items = items, 
-                Cc = new List<string>
-                {
-                    "agallardo@bitpay.com",
-                    "agallardo+1@bitpay.com"
-                }
+                //Email = "", 
+                Items = items
             };
             var basicBill = await _bitpay.CreateBill(bill);
             Assert.NotNull(basicBill.Url);
@@ -266,13 +251,8 @@ namespace BitPay_xUnit_Test
             {
                 Number = "4", 
                 Currency = Currency.USD, 
-                Email = "agallardo@bitpay.com", 
-                Items = items, 
-                Cc = new List<string>
-                {
-                    "agallardo@bitpay.com",
-                    "agallardo+1@bitpay.com"
-                }
+                //Email = "", 
+                Items = items
             };
             var basicBill = await _bitpay.CreateBill(bill);
             Assert.Equal(BillStatus.Draft, basicBill.Status);
@@ -291,13 +271,8 @@ namespace BitPay_xUnit_Test
             {
                 Number = "5", 
                 Currency = Currency.USD, 
-                Email = "agallardo@bitpay.com", 
-                Items = items, 
-                Cc = new List<string>
-                {
-                    "agallardo@bitpay.com",
-                    "agallardo+1@bitpay.com"
-                }
+                //Email = "", 
+                Items = items
             };
             var basicBill = await _bitpay.CreateBill(bill);
             Assert.Equal(basicBill.Items.Select(i => i.Price).Sum(), items.Select(i => i.Price).Sum());
@@ -316,13 +291,8 @@ namespace BitPay_xUnit_Test
             {
                 Number = "6", 
                 Currency = Currency.USD, 
-                Email = "agallardo@bitpay.com", 
-                Items = items, 
-                Cc = new List<string>
-                {
-                    "agallardo@bitpay.com",
-                    "agallardo+1@bitpay.com"
-                }
+                //Email = "", 
+                Items = items
             };
             var basicBill = await _bitpay.CreateBill(bill);
             var retrievedBill = await _bitpay.GetBill(basicBill.Id);
@@ -343,12 +313,8 @@ namespace BitPay_xUnit_Test
             {
                 Number = "7", 
                 Currency = Currency.USD, 
-                Email = "agallardo@bitpay.com", 
-                Items = items, 
-                Cc = new List<string>
-                {
-                    "agallardo@bitpay.com"
-                }
+                //Email = "", 
+                Items = items
             };
             var basicBill = await _bitpay.CreateBill(bill);
             var result = await _bitpay.DeliverBill(basicBill.Id, basicBill.Token);
