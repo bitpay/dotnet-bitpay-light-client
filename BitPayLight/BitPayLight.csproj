@@ -2,23 +2,32 @@
 
     <PropertyGroup>
         <PackageId>BitPay.Light</PackageId>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <LangVersion>latest</LangVersion>
+        <!-- version numbers will be updated by build -->
+        <AssemblyVersion>1.0.1907.0</AssemblyVersion>
+        <FileVersion>1.0.1907</FileVersion>
+        <VersionPrefix>1.0.1907</VersionPrefix>
         <Version>1.0.1907</Version>
         <Authors>Antonio Buedo</Authors>
         <Company>BitPay Inc.</Company>
+        <Owners>BitPay, Inc.</Owners>
+        <Product>BitPay Light</Product>
+        <Description>This library is a simple way to integrate your Net Core application with BitPay along with your BitPay account for taking Bitcoin and Bitcoin Cash payments. It exposes six basic functions, creating and retrieving invoices, creating, retrieving and delivering bills and retrieving rates. It is not meant as a replacement for the entire BitPay API.</Description>
+        <Copyright>Copyright (c) 2019 BitPay, Inc.</Copyright>
+        <Summary>This library is a simple way to integrate your Net Core application with BitPay along with your BitPay account for taking Bitcoin and Bitcoin Cash payments. It exposes six basic functions, creating and retrieving invoices, creating, retrieving and delivering bills and retrieving rates. It is not meant as a replacement for the entire BitPay API.</Summary>
+        <NeutralLanguage>en-US</NeutralLanguage>
         <Title>BitPay's light API client</Title>
-        <PackageDescription>This library is a simple way to integrate your application with BitPay along with your BitPay account for taking Bitcoin and Bitcoin Cash payments. It exposes three basic functions, creating invoices, retrieving invoices and retrieving rates. It is not meant as a replacement for the entire BitPay API.</PackageDescription>
-        <Copyright>Copyright (c) 2013-2019 BitPay, Inc.</Copyright>
+        <PackageTags>bitcoin bitpay cash payment gateway</PackageTags>
+        <PackageIconUrl>https://bitpay.com/_nuxt/img/1c0494b.svg</PackageIconUrl>
+        <PackageProjectUrl>https://bitpay.com</PackageProjectUrl>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+        <RootNamespace>BitPayLight</RootNamespace>
+        <AssemblyName>BitPayLight</AssemblyName>   
+        <PackageDescription>This library is a simple way to integrate your application with BitPay along with your BitPay account for taking Bitcoin and Bitcoin Cash payments. It exposes six basic functions, creating and retrieving invoices, creating, retrieving and delivering bills and retrieving rates. It is not meant as a replacement for the entire BitPay API.</PackageDescription>
         <RepositoryUrl>https://github.com/bitpay/csharp-bitpay-client</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
-        <PackageLicenseExpression>MIT</PackageLicenseExpression>
-        <RootNamespace>BitPayLight</RootNamespace>
-        <AssemblyName>BitPayLight</AssemblyName>
-        <TargetFramework>netstandard2.0</TargetFramework>
-        <PackageIconUrl>https://bitpay.com/images/bitpay-logo-blue.ad54fcdc.png</PackageIconUrl>
-        <Owners>BitPay, Inc.</Owners>
-        <PackageProjectUrl>https://github.com/bitpay/csharp-bitpay-client</PackageProjectUrl>
-        <Description>This library is a simple way to integrate your Net Core application with BitPay along with your BitPay account for taking Bitcoin and Bitcoin Cash payments. It exposes three basic functions, creating invoices, retrieving invoices and retrieving rates. It is not meant as a replacement for the entire BitPay API.</Description>
     </PropertyGroup>
 
     <ItemGroup>
