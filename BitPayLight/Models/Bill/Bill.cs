@@ -27,9 +27,6 @@ namespace BitPayLight.Models.Bill
         // API fields
         //
 
-        [JsonProperty(PropertyName = "guid")]
-        public string Guid { get; set; }
-
         [JsonProperty(PropertyName = "token")]
         public string Token { get; set; }
 
