@@ -132,13 +132,12 @@ namespace BitPayLight
         ///     Create a bill.
         /// </summary>
         /// <param name="bill">An invoice request object.</param>
-        /// <returns>A new invoice object returned from the server.</returns>
+        /// <returns>A new bill object returned from the server.</returns>
         public async Task<Bill> CreateBill(Bill bill)
         {
             try
             {
                 bill.Token = _token;
-                bill.Guid = Guid.NewGuid().ToString();
                 var json = JsonConvert.SerializeObject(bill);
                 var response = await _restHelper.Post("bills", json).ConfigureAwait(false);
                 var responseString = await _restHelper.ResponseToJsonString(response).ConfigureAwait(false);
