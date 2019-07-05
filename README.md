@@ -1,4 +1,8 @@
+<img src="https://bitpay.com/_nuxt/img/1c0494b.svg" width="150">
+
 # BitPay .NET light client
+[![NuGet version (BitPay.Light)](https://img.shields.io/nuget/v/BitPay.Light.svg?style=for-the-badge&logo=nuget)](https://www.nuget.org/packages/BitPay.Light/)
+[![License](https://img.shields.io/github/license/bitpay/dotnet-bitpay-light-client.svg?style=for-the-badge&logo=github)](https://raw.githubusercontent.com/bitpay/dotnet-bitpay-light-client/master/LICENSE)
 
 Light implementation of the client for the BitPay's [Cryptographically Secure RESTful API](https://bitpay.com/api).
 
