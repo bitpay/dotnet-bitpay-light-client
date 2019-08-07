@@ -7,6 +7,7 @@ namespace BitPayLight.Models.Invoice
     public class Invoice
     {
         private string _currency = "";
+        private dynamic _exchangeRates;
 
         /// <summary>
         ///     Creates an uninitialized invoice request object.
@@ -126,6 +127,8 @@ namespace BitPayLight.Models.Invoice
         public SupportedTransactionCurrencies SupportedTransactionCurrencies { get; set; }
 
         public MinerFees MinerFees { get; set; }
+        
+        public string TransactionCurrency { get; set; }
 
         public PaymentCodes PaymentCodes { get; set; }
 
@@ -139,7 +142,10 @@ namespace BitPayLight.Models.Invoice
 
         public double AmountPaid { get; set; }
 
-        public ExchangeRates ExchangeRates { get; set; }
+        public dynamic ExchangeRates {
+            get => _exchangeRates;
+            set => _exchangeRates = JsonConvert.DeserializeObject(value.ToString(Formatting.None));
+        }
 
         public bool ShouldSerializeOrderId()
         {
