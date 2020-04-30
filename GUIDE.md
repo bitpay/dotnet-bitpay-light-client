@@ -76,7 +76,7 @@ Invoice invoice = new Invoice(100.0, Currency.USD)
 invoice = bitpay.createInvoice(invoice).Result;
 ```
 
-### Retreive an invoice
+### Retrieve an invoice
 
 ```c#
 Invoice invoice = bitpay.getInvoice(invoice.Id).Result;
