@@ -115,7 +115,7 @@ Bill bill = new Bill()
 bill = bitpay.CreateBill(bill).Result;
 ```
 
-### Retreive a bill
+### Retrieve a bill
 
 ```c#
 Bill bill = bitpay.getBill(bill.Id).Result;
