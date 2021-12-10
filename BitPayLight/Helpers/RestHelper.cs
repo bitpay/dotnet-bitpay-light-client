@@ -114,6 +114,17 @@ namespace BitPayLight.Helpers
                     jObj = new JObject();
 
                 JToken value;
+                JToken code;
+
+                if (jObj.TryGetValue("status", out value))
+                {
+                    if (value.ToString().Equals("error"))
+                    {
+                        jObj.TryGetValue("code", out code);
+                        jObj.TryGetValue("message", out value);
+                        throw new BitPayLightCommunicationException(code.ToString(), value.ToString());
+                    }
+                }
 
                 // Check for error response.
                 if (jObj.TryGetValue("error", out value)) throw new BitPayLightCommunicationException(value.ToString());
