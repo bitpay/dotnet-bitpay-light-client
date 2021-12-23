@@ -61,6 +61,8 @@ namespace BitPayLight
         /// </summary>
         /// <param name="invoice">An invoice request object.</param>
         /// <returns>A new invoice object returned from the API.</returns>
+        /// <throws>InvoiceCreationException InvoiceCreationException class</throws>
+        /// <throws>BitPayException BitPayException class</throws>
         public async Task<Invoice> CreateInvoice(Invoice invoice)
         {
             try
@@ -71,6 +73,10 @@ namespace BitPayLight
                 var response = await _restHelper.Post("invoices", json).ConfigureAwait(false);
                 var responseString = await _restHelper.ResponseToJsonString(response).ConfigureAwait(false);
                 JsonConvert.PopulateObject(responseString, invoice);
+            }
+            catch (BitPayException ex)
+            {
+                throw new InvoiceCreationException(ex, ex.GetApiCode());
             }
             catch (Exception ex)
             {
@@ -88,6 +94,8 @@ namespace BitPayLight
         /// </summary>
         /// <param name="invoiceId">The id of the requested invoice.</param>
         /// <returns>A new invoice object returned from the API.</returns>
+        /// <throws>InvoiceQueryException InvoiceQueryException class</throws>
+        /// <throws>BitPayException BitPayException class</throws>
         public async Task<Invoice> GetInvoice(string invoiceId)
         {
             Dictionary<string, string> parameters = null;
@@ -96,6 +104,10 @@ namespace BitPayLight
                 var response = await _restHelper.Get("invoices/" + invoiceId, parameters);
                 var responseString = await _restHelper.ResponseToJsonString(response);
                 return JsonConvert.DeserializeObject<Invoice>(responseString);
+            }
+            catch (BitPayException ex)
+            {
+                throw new InvoiceQueryException(ex, ex.GetApiCode());
             }
             catch (Exception ex)
             {
@@ -110,6 +122,8 @@ namespace BitPayLight
         ///     Retrieve the exchange rate table using the public facade.
         /// </summary>
         /// <returns>The rate table as an object retrieved from the server.</returns>
+        /// <throws>RatesQueryException RatesQueryException class</throws>
+        /// <throws>BitPayException BitPayException class</throws>
         public async Task<Rates> GetRates()
         {
             try
@@ -118,6 +132,10 @@ namespace BitPayLight
                 var responseString = await _restHelper.ResponseToJsonString(response);
                 var rates = JsonConvert.DeserializeObject<List<Rate>>(responseString);
                 return new Rates(rates, this);
+            }
+            catch (BitPayException ex)
+            {
+                throw new RatesQueryException(ex, ex.GetApiCode());
             }
             catch (Exception ex)
             {
@@ -133,6 +151,8 @@ namespace BitPayLight
         /// </summary>
         /// <param name="bill">An invoice request object.</param>
         /// <returns>A new bill object returned from the server.</returns>
+        /// <throws>BillCreationException BillCreationException class</throws>
+        /// <throws>BitPayException BitPayException class</throws>
         public async Task<Bill> CreateBill(Bill bill)
         {
             try
@@ -143,6 +163,10 @@ namespace BitPayLight
                 var responseString = await _restHelper.ResponseToJsonString(response).ConfigureAwait(false);
                 var serializerSettings = new JsonSerializerSettings {ObjectCreationHandling = ObjectCreationHandling.Replace};
                 JsonConvert.PopulateObject(responseString, bill, serializerSettings);
+            }
+            catch (BitPayException ex)
+            {
+                throw new BillCreationException(ex, ex.GetApiCode());
             }
             catch (Exception ex)
             {
@@ -160,6 +184,8 @@ namespace BitPayLight
         /// </summary>
         /// <param name="billId">The id of the requested bill.</param>
         /// <returns>A new bill object returned from the API.</returns>
+        /// <throws>BillQueryException BillQueryException class</throws>
+        /// <throws>BitPayException BitPayException class</throws>
         public async Task<Bill> GetBill(string billId)
         {
             try
@@ -168,6 +194,10 @@ namespace BitPayLight
                 var response = await _restHelper.Get("bills/" + billId, parameters);
                 var responseString = await _restHelper.ResponseToJsonString(response);
                 return JsonConvert.DeserializeObject<Bill>(responseString);
+            }
+            catch (BitPayException ex)
+            {
+                throw new BillQueryException(ex, ex.GetApiCode());
             }
             catch (Exception ex)
             {
@@ -184,6 +214,8 @@ namespace BitPayLight
         /// <param name="billId">The id of the requested bill.</param>
         /// <param name="billToken">The token of the requested bill.</param>
         /// <returns>A response status returned from the API.</returns>
+        /// <throws>BillDeliveryException BillDeliveryException class</throws>
+        /// <throws>BitPayException BitPayException class</throws>
         public async Task<string> DeliverBill(string billId, string billToken)
         {
             var responseString = "";
@@ -192,6 +224,10 @@ namespace BitPayLight
                 var json = JsonConvert.SerializeObject(new Dictionary<string, string>{{"token", billToken}});
                 var response = await _restHelper.Post("bills/" + billId + "/deliveries", json).ConfigureAwait(false);
                 responseString = await _restHelper.ResponseToJsonString(response).ConfigureAwait(false);
+            }
+            catch (BitPayException ex)
+            {
+                throw new BillDeliveryException(ex, ex.GetApiCode());
             }
             catch (Exception ex)
             {

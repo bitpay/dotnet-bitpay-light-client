@@ -8,6 +8,7 @@ namespace BitPayLight.Models.Invoice
     {
         private string _currency = "";
         private dynamic _exchangeRates;
+        private dynamic _refundAddresses;
 
         /// <summary>
         ///     Creates an uninitialized invoice request object.
@@ -75,6 +76,15 @@ namespace BitPayLight.Models.Invoice
         [JsonProperty(PropertyName = "fullNotifications")]
         public bool FullNotifications { get; set; }
 
+        [JsonProperty(PropertyName = "autoRedirect")]
+        public bool AutoRedirect { get; set; }
+
+        [JsonProperty(PropertyName = "nonPayProPaymentReceived")]
+        public bool NonPayProPaymentReceived { get; set; }
+
+        [JsonProperty(PropertyName = "jsonPayProRequired")]
+        public bool JsonPayProRequired { get; set; }
+
         [JsonProperty(PropertyName = "extendedNotifications")]
         public bool ExtendedNotifications { get; set; }
 
@@ -107,7 +117,9 @@ namespace BitPayLight.Models.Invoice
         public string Url { get; set; }
 
         public string Status { get; set; }
-        
+
+        public string BuyerProvidedEmail { get; set; }
+
         public string LowFeeDetected { get; set; }
 
         public long InvoiceTime { get; set; }
@@ -116,21 +128,38 @@ namespace BitPayLight.Models.Invoice
 
         public long CurrentTime { get; set; }
 
+        public int TargetConfirmations { get; set; }
+
+        public int UnderpaidAmount { get; set; }
+
+        public int OverpaidAmount { get; set; }
+
         public List<InvoiceTransaction> Transactions { get; set; }
 
         public string ExceptionStatus { get; set; }
-        
+
+        public dynamic RefundAddresses
+        {
+            get => _refundAddresses;
+            set => _refundAddresses = JsonConvert.DeserializeObject(value.ToString(Formatting.None));
+        }
+
         public string RefundAddressRequestPending { get; set; }
+
         
         public InvoiceBuyerProvidedInfo BuyerProvidedInfo { get; set; }
 
         public SupportedTransactionCurrencies SupportedTransactionCurrencies { get; set; }
 
         public MinerFees MinerFees { get; set; }
-        
+
+        public string BillId { get; set; }
+
         public string TransactionCurrency { get; set; }
 
         public PaymentCodes PaymentCodes { get; set; }
+
+        public string DisplayAmountPaid { get; set; }
 
         public PaymentTotal PaymentSubtotals { get; set; }
 
@@ -141,6 +170,8 @@ namespace BitPayLight.Models.Invoice
         public PaymentTotal PaymentDisplaySubTotals { get; set; }
 
         public double AmountPaid { get; set; }
+
+        public string CloseURL { get; set; }
 
         public dynamic ExchangeRates {
             get => _exchangeRates;
@@ -252,7 +283,27 @@ namespace BitPayLight.Models.Invoice
             return false;
         }
 
+        public bool ShouldSerializeTargetConfirmations()
+        {
+            return false;
+        }
+
+        public bool ShouldSerializeUnderpaidAmount()
+        {
+            return false;
+        }
+
+        public bool ShouldSerializeOverpaidAmount()
+        {
+            return false;
+        }
+
         public bool ShouldSerializeAmountPaid()
+        {
+            return false;
+        }
+
+        public bool ShouldSerializeDisplayAmountPaid()
         {
             return false;
         }
@@ -287,6 +338,11 @@ namespace BitPayLight.Models.Invoice
             return false;
         }
 
+        public bool ShouldSerializeBillId()
+        {
+            return false;
+        }
+
         public bool ShouldSerializePaymentCodes()
         {
             return false;
@@ -301,7 +357,7 @@ namespace BitPayLight.Models.Invoice
         {
             return false;
         }
-
+        
         public bool ShouldSerializeRefundAddressRequestPending()
         {
             return false;
@@ -310,6 +366,15 @@ namespace BitPayLight.Models.Invoice
         public bool ShouldSerializeBuyerProvidedInfo()
         {
             return false;
+        }
+        public bool ShouldSerializeCloseURL()
+        {
+            return !string.IsNullOrEmpty(CloseURL);
+        }
+
+        public bool ShouldSerializeBuyerProvidedEmail()
+        {
+            return !string.IsNullOrEmpty(BuyerProvidedEmail);
         }
     }
 }

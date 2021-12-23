@@ -9,6 +9,7 @@ namespace BitPayLight.Exceptions
     {
         private const string BitPayMessage = "Unexpected Bitpay exeption";
         protected string BitpayCode = "BITPAY-GENERIC";
+        protected string ApiCode;
 
         public BitPayException() : base(BitPayMessage)
         {
@@ -19,9 +20,16 @@ namespace BitPayLight.Exceptions
         /// </summary>
         /// <param name="bitpayCode">The bitpayCode of the exception</param>
         /// <param name="message">The message text for the exception.</param>
-        public BitPayException(string bitpayCode, string message) : base(message)
+        public BitPayException(string code, string message, bool isApiCode = false) : base(message)
         {
-            BitpayCode = bitpayCode;
+            if (isApiCode)
+            {
+                ApiCode = code;
+            }
+            else
+            {
+                BitpayCode = code;
+            }
         }
 
         /// <summary>
@@ -30,9 +38,11 @@ namespace BitPayLight.Exceptions
         /// <param name="bitpayCode">The bitpayCode of the exception</param>
         /// <param name="message">The message text for the exception.</param>
         /// <param name="cause">The root cause of this exception.</param>
-        public BitPayException(string bitpayCode, string message, Exception cause) : base(message, cause)
+        /// <param name="apiCode">The API exception code to throw.</param>
+        public BitPayException(string bitpayCode, string message, Exception cause, string apiCode) : base(message, cause)
         {
             BitpayCode = bitpayCode;
+            ApiCode = apiCode;
         }
 
         public BitPayException(Exception cause) : base(BitPayMessage, cause)
@@ -47,6 +57,13 @@ namespace BitPayLight.Exceptions
         {
         }
 
-        public string Code => BitpayCode;
+        public BitPayException(string bitpayCode, string message, Exception ex) : this(bitpayCode, message)
+        {
+        }
+
+        public String GetApiCode()
+        {
+            return ApiCode;
+        }
     }
 }
